@@ -4,6 +4,7 @@ const btnClosed=document.getElementById("btn-closed")
 
 btnAll.addEventListener("click", function() {
     loadLevel("all");
+   
 });
  
 btnOpen.addEventListener("click", function() {
@@ -15,8 +16,10 @@ fetch(url)
     const openIssues = data.data.filter(issue => issue.status === 'open');
 
             displayLevel(openIssues);
+             createNumber()
         })
 });
+
 btnClosed.addEventListener("click", function() {
 const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
 fetch(url)
@@ -24,11 +27,16 @@ fetch(url)
 .then((data) => {
 
  const closedIssues = data.data.filter(issue => issue.status ==='closed');
-
             displayLevel(closedIssues);
+            createNumber()
         })
     })
 
+const numberContainer=document.getElementById("number-container")
+const wordContainer= document.getElementById("word-container");
+function createNumber(){
+    numberContainer.innerText=wordContainer.children.length
+}
 
 const loadLevel=(id)=>{
  const url=`https://phi-lab-server.vercel.app/api/v1/lab/issues `;
@@ -36,9 +44,12 @@ const loadLevel=(id)=>{
  .then((res)=> res.json())
  .then((data)=>displayLevel(data.data));
 };
-const loadDetail=(id)=>{
+const loadDetail= async(id)=>{
     const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}`;
-    console.log(url)
+    // console.log(url)
+    const res= await fetch(url)
+    const details=await res.json();
+    console.log(details)
 }
     const displayLevel=(words)=>{
     const wordContainer= document.getElementById("word-container");
@@ -83,6 +94,7 @@ const loadDetail=(id)=>{
 `;
         wordContainer.appendChild(card);
     });
+     createNumber()
 };
 
-// loadLevel();
+loadLevel()
