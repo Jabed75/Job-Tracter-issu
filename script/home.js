@@ -12,11 +12,10 @@ fetch(url)
  .then((res) => res.json())
 .then((data) => {
     
-            const openIssues = data.data.filter(issue => issue.status === 'open');
+    const openIssues = data.data.filter(issue => issue.status === 'open');
 
             displayLevel(openIssues);
         })
-        .catch(error => console.error("Error fetching data:", error));
 });
 btnClosed.addEventListener("click", function() {
 const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
@@ -24,12 +23,11 @@ fetch(url)
  .then((res) => res.json())
 .then((data) => {
 
-            const closedIssues = data.data.filter(issue => issue.status === 'closed');
+ const closedIssues = data.data.filter(issue => issue.status ==='closed');
 
             displayLevel(closedIssues);
         })
-        .catch(error => console.error("Error fetching data:", error));
-});
+    })
 
 
 const loadLevel=(id)=>{
@@ -38,7 +36,10 @@ const loadLevel=(id)=>{
  .then((res)=> res.json())
  .then((data)=>displayLevel(data.data));
 };
-
+const loadDetail=(id)=>{
+    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}`;
+    console.log(url)
+}
     const displayLevel=(words)=>{
     const wordContainer= document.getElementById("word-container");
     wordContainer.innerHTML="";
@@ -62,7 +63,7 @@ const loadLevel=(id)=>{
 
 
     words.forEach((word)=>{
-        console.log(word)
+        // console.log(word)
         const card=document.createElement("div");
     card.innerHTML = `
      <div class="bg-white rounded-xl shadow-sm  py-10 px-10 space-y-4">
@@ -73,8 +74,8 @@ const loadLevel=(id)=>{
         <h2 class="text-2xl font-bold">${word.title}</h2>
         <p>${word.description}</p>
         <div class="flex justify-between">
-            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">Bug</button>
-            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
+            <button onclick="loadDetail(${word.id})" class="btn bg-[#FDE68A] hover:bg-[rgba(253,230,138,0.5)]">Bug</button>
+            <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
         </div>
         <p>${word.author}</p>
         <p>${word.createdAt}</p>
