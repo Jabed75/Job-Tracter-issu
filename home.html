@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <!-- font awosome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+     <!-- tawling+daisyui -->
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+      </script>
+      <!-- stylesheet -->
+      <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+     <section>
+        <div class=" flex gap-2 justify-between items-center">
+          <img src="./assets/github-logo.png" alt="">
+      <div>
+        <h2 class="text-2xl font-blod mt-10">GitHub Issues Tracker</h2>
+        </div>
+        <div class="join">
+    <div>
+    <label class="input validator join-item">
+        <g
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke-width="2.5"
+          fill="none"
+          stroke="currentColor"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </g>
+      </svg>
+      <input type="email" placeholder="Search issues..." required />
+    </label>
+    <div class="validator-hint hidden">text</div>
+  </div>
+  <button class="btn btn-neutral join-item">+New issues</button>
+</div>
+    </div>
+    
+    </section> 
+
+       <section class="mt-15">
+    <div class="flex items-start gap-3 shadow-xl p-10"> 
+        <img src="assets/Aperture.png" alt="Logo">
+        <div>
+        <h2 class="text-3xl font-bold">v50 Issues</h2>
+        <p class="text-gray-500">Track and manage your project issues</p>
+        </div>
+    </div>
+</section>
+    
+    <div id="level-container" class="flex gap-10 mt-18 pt-10 ">
+    <button id="onclick-btn" class="bg-blue-700 text-3xl text-white px-6 py-2 rounded-lg">All</button>
+    <button id="onclick-btn" class="text-3xl px-6 py-2">Open</button>
+    <button id="onclick-btn" class="text-3xl px-6 py-2">Closed</button>
+   </div>
+   
+   <section id="word-container" class="bg-gray-200 p-10 w-11/12 mx-auto my-10 grid grid-cols-4 gap-5">
+     
+   
+   </section>
+    <script src="./script/home.js"></script>
+</body>
+</html>
