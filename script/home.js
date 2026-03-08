@@ -1,12 +1,48 @@
-const loadLevelWord=(id)=>{
+const btnAll=document.getElementById("btn-all")
+const btnOpen=document.getElementById("btn-open")
+const btnClosed=document.getElementById("btn-closed")
+
+btnAll.addEventListener("click", function() {
+    loadLevel("all");
+});
+ 
+btnOpen.addEventListener("click", function() {
+const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
+fetch(url)
+ .then((res) => res.json())
+.then((data) => {
+    
+            const openIssues = data.data.filter(issue => issue.status === 'open');
+
+            displayLevel(openIssues);
+        })
+        .catch(error => console.error("Error fetching data:", error));
+});
+btnClosed.addEventListener("click", function() {
+const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
+fetch(url)
+ .then((res) => res.json())
+.then((data) => {
+
+            const closedIssues = data.data.filter(issue => issue.status === 'closed');
+
+            displayLevel(closedIssues);
+        })
+        .catch(error => console.error("Error fetching data:", error));
+});
+
+
+const loadLevel=(id)=>{
  const url=`https://phi-lab-server.vercel.app/api/v1/lab/issues `;
  fetch(url)
  .then((res)=> res.json())
- .then((data)=>displayLevelword(data.data));
+ .then((data)=>displayLevel(data.data));
 };
-const displayLevelword=(words)=>{
+
+    const displayLevel=(words)=>{
     const wordContainer= document.getElementById("word-container");
     wordContainer.innerHTML="";
+
 
 //     {
 //     "id": 44,
@@ -23,23 +59,29 @@ const displayLevelword=(words)=>{
 //     "createdAt": "2024-02-07T10:30:00Z",
 //     "updatedAt": "2024-02-07T10:30:00Z"
 // }
+
+
     words.forEach((word)=>{
         console.log(word)
         const card=document.createElement("div");
-  card.innerHTML = `
- <div class="bg-white rounded-xl shadow-sm  py-10 px-10 space-y-4">
+    card.innerHTML = `
+     <div class="bg-white rounded-xl shadow-sm  py-10 px-10 space-y-4">
+    <div class="flex justify-between text-center  items-center shad">
+      <img src="./assets/Open-Status.png" alt="">
+      <button class="bg-gray-200 shadow-xl">${word.priority}</button>
+    </div>
         <h2 class="text-2xl font-bold">${word.title}</h2>
         <p>${word.description}</p>
         <div class="flex justify-between">
-            <button class="btn bg-[#FDE68A10] hover:bg-[#FDE68A80]">Bug</button>
-            <button class="btn bg-[#FDE68A10] hover:bg-[#FDE68A80]">help wanted</button>
+            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">Bug</button>
+            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
         </div>
-        <p>#1 by john_doe</p>
-        <p>${word.updatedAt}</p>
+        <p>${word.author}</p>
+        <p>${word.createdAt}</p>
      </div>
 `;
         wordContainer.appendChild(card);
     });
 };
 
-loadLevelWord();
+// loadLevel();
