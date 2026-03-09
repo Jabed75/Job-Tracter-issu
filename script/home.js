@@ -1,26 +1,48 @@
+const controlSpiner=(status)=>{
+    if(status==true){
+     document.getElementById("spinner").classList.remove("hidden")
+     document.getElementById("word-container").classList.add("hidden")
+    }
+
+    else{
+     document.getElementById("word-container").classList.remove("hidden")
+     document.getElementById("spinner").classList.add("hidden")
+    }
+}
 const btnAll=document.getElementById("btn-all")
 const btnOpen=document.getElementById("btn-open")
 const btnClosed=document.getElementById("btn-closed")
 
 btnAll.addEventListener("click", function() {
+    btnAll.classList.add("btn-primary");
+    btnOpen.classList.remove("btn-primary");
+    btnClosed.classList.remove("btn-primary");
     loadLevel("all");
    
 });
  
 btnOpen.addEventListener("click", function() {
+    btnAll.classList.remove("btn-primary");
+    btnOpen.classList.add("btn-primary");
+    btnClosed.classList.remove("btn-primary");
+
 const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
 fetch(url)
  .then((res) => res.json())
 .then((data) => {
     
-    const openIssues = data.data.filter(issue => issue.status === 'open');
 
+    const openIssues = data.data.filter(issue => issue.status === 'open');
+     
             displayLevel(openIssues);
              createNumber()
         })
 });
 
 btnClosed.addEventListener("click", function() {
+     btnAll.classList.remove("btn-primary");
+    btnOpen.classList.remove("btn-primary");
+    btnClosed.classList.add("btn-primary");
 const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
 fetch(url)
  .then((res) => res.json())
@@ -42,14 +64,37 @@ const loadLevel=(id)=>{
  const url=`https://phi-lab-server.vercel.app/api/v1/lab/issues `;
  fetch(url)
  .then((res)=> res.json())
- .then((data)=>displayLevel(data.data));
+ .then((data)=>displayLevel(data.data))
 };
-const loadDetail= async(id)=>{
-    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}`;
-    // console.log(url)
+
+// {
+//     "id": 5,
+//     "title": "Add user authentication system",
+//     "description": "Implement JWT-based authentication with login, registration, and password reset functionality.",
+//     "status": "open",
+//     "labels": [
+//         "enhancement"
+//     ],
+//     "priority": "high",
+//     "author": "security_sam",
+//     "assignee": "john_doe",
+//     "createdAt": "2024-01-20T09:00:00Z",
+//     "updatedAt": "2024-01-20T09:00:00Z"
+// }
+
+const loadDteails= async(id)=>{
+    controlSpiner(true);
+    const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+
     const res= await fetch(url)
     const details=await res.json();
-    console.log(details)
+    displayDetail(details.data);
+}
+const displayDetail=(word)=>{
+     console.log(word)
+     const cardBox=document.getElementById("card-container");
+    //  cardBox.innerHTML= ``;
+     document.getElementById("my_modal").showModal();
 }
     const displayLevel=(words)=>{
     const wordContainer= document.getElementById("word-container");
@@ -76,6 +121,10 @@ const loadDetail= async(id)=>{
     words.forEach((word)=>{
         // console.log(word)
         const card=document.createElement("div");
+
+        card.onclick=()=>loadDteails(word.id)
+        
+      
     card.innerHTML = `
      <div class="bg-white rounded-xl shadow-sm  py-10 px-10 space-y-4">
     <div class="flex justify-between text-center  items-center shad">
@@ -85,7 +134,7 @@ const loadDetail= async(id)=>{
         <h2 class="text-2xl font-bold">${word.title}</h2>
         <p>${word.description}</p>
         <div class="flex justify-between">
-            <button onclick="loadDetail(${word.id})" class="btn bg-[#FDE68A] hover:bg-[rgba(253,230,138,0.5)]">Bug</button>
+            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">Bug</button>
             <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
         </div>
         <p>${word.author}</p>
@@ -95,6 +144,7 @@ const loadDetail= async(id)=>{
         wordContainer.appendChild(card);
     });
      createNumber()
+     controlSpiner(false);
 };
 
 loadLevel()

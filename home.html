@@ -51,9 +51,9 @@
 <!-- all-open-closed button -->
     
   <div id="level-container" class="flex gap-10 mt-18 pt-10">
-    <button id="btn-all" class="filter-btn bg-blue-700 text-3xl text-white px-6 py-2 rounded-lg">All</button>
-    <button id="btn-open" class="filter-btn text-3xl px-6 py-2">Open</button>
-    <button id="btn-closed" class="filter-btn text-3xl px-6 py-2">Closed</button>
+    <button id="btn-all" class="filter-btn btn btn-primary text-3xl  px-6 py-2 rounded-lg">All</button>
+    <button id="btn-open" class="filter-btn btn text-3xl px-6 py-2">Open</button>
+    <button id="btn-closed" class="filter-btn btn text-3xl px-6 py-2">Closed</button>
 </div>
 
  <section class="mt-5 shadow-sky-300 pt-10 px-10 rounded-md">
@@ -94,6 +94,9 @@
   </div>
 </div>
 </section>
+<section id="spinner" class="flex justify-center items-center py-6 hidden">
+  <span class="loading loading-ring loading-xl"></span>
+</section>
    
 <section id="word-container" class="bg-gray-200 p-10 w-11/12 mx-auto my-10 grid grid-cols-4 gap-5">
      
@@ -102,10 +105,27 @@
 
    <!-- Open the modal using ID.showModal() method -->
 <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+<dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click the button below to close</p>
+   <div id="card-container"></div>
+   <div class="">
+    <h1 class="text-3xl font-bold">Fix broken image uploads</h1>
+   </div>
+   <div class="">
+    <span class="text-xl bg-[#00A96E] text-[#FFFFFF] rounded-md">opened</span>
+    <span class="text-[#64748B]"> .Opened by Fahim Ahmed</span>
+    <span class="text-[#64748B]"> .22/02/2026</span>
+   </div>
+   <br>
+    <div class=" flex gap-10">
+    <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">Bug</button>
+    <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
+   </div>
+   <br>
+   <div class="">
+    <h1 class="text-xl text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</h1>
+   </div>
+
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
