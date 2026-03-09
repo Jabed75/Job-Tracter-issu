@@ -99,17 +99,17 @@ const displayDetail=(word)=>{
      const cardBox=document.getElementById("card-container");
      cardBox.innerHTML= `
       <div class="">
-    <h1 class="text-3xl font-bold">.${word.title}</h1>
+    <h1 class="text-3xl font-bold">${word.title}</h1>
    </div>
    <div class="">
     <span class="text-xl bg-[#00A96E] text-[#FFFFFF] rounded-md">${word.status}</span>
     <span class="text-[#64748B]">  .Opened by Fahim Ahmed</span>
-    <span class="text-[#64748B]"> ${word.updatedAt}</span>
+    <span class="text-[#64748B]"> .${word.updatedAt}</span>
    </div>
    <br>
     <div class=" flex gap-10">
-    <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">Bug</button>
-    <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
+    <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">${word.status}</button>
+    <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">${word.labels}</button>
    </div>
    <br>
    <div class="">
@@ -167,8 +167,8 @@ const displayDetail=(word)=>{
         <h2 class="text-2xl font-bold">${word.title}</h2>
         <p>${word.description}</p>
         <div class="flex justify-between">
-            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">Bug</button>
-            <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
+            <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">${word.status}</button>
+            <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">${word.labels}</button>
         </div>
         <p>${word.author}</p>
         <p>${word.createdAt}</p>
