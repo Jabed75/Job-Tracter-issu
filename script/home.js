@@ -1,4 +1,4 @@
-const controlSpiner=(status)=>{
+const controlSpinner=(status)=>{
     if(status==true){
      document.getElementById("spinner").classList.remove("hidden")
      document.getElementById("word-container").classList.add("hidden")
@@ -14,6 +14,7 @@ const btnOpen=document.getElementById("btn-open")
 const btnClosed=document.getElementById("btn-closed")
 
 btnAll.addEventListener("click", function() {
+    controlSpinner(true);
     btnAll.classList.add("btn-primary");
     btnOpen.classList.remove("btn-primary");
     btnClosed.classList.remove("btn-primary");
@@ -22,6 +23,7 @@ btnAll.addEventListener("click", function() {
 });
  
 btnOpen.addEventListener("click", function() {
+    controlSpinner(true);
     btnAll.classList.remove("btn-primary");
     btnOpen.classList.add("btn-primary");
     btnClosed.classList.remove("btn-primary");
@@ -40,6 +42,7 @@ fetch(url)
 });
 
 btnClosed.addEventListener("click", function() {
+    controlSpinner(true);
      btnAll.classList.remove("btn-primary");
     btnOpen.classList.remove("btn-primary");
     btnClosed.classList.add("btn-primary");
@@ -61,6 +64,7 @@ function createNumber(){
 }
 
 const loadLevel=(id)=>{
+    controlSpinner(true);
  const url=`https://phi-lab-server.vercel.app/api/v1/lab/issues `;
  fetch(url)
  .then((res)=> res.json())
@@ -83,7 +87,7 @@ const loadLevel=(id)=>{
 // }
 
 const loadDteails= async(id)=>{
-    controlSpiner(true);
+     
     const url=`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
 
     const res= await fetch(url)
@@ -93,7 +97,36 @@ const loadDteails= async(id)=>{
 const displayDetail=(word)=>{
      console.log(word)
      const cardBox=document.getElementById("card-container");
-    //  cardBox.innerHTML= ``;
+     cardBox.innerHTML= `
+      <div class="">
+    <h1 class="text-3xl font-bold">Fix broken image uploads</h1>
+   </div>
+   <div class="">
+    <span class="text-xl bg-[#00A96E] text-[#FFFFFF] rounded-md">opened</span>
+    <span class="text-[#64748B]"> .Opened by Fahim Ahmed</span>
+    <span class="text-[#64748B]"> .22/02/2026</span>
+   </div>
+   <br>
+    <div class=" flex gap-10">
+    <button class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]]">Bug</button>
+    <button  class="btn bg-[#FDE68A] hover:bg-[#FDE68A80]">help wanted</button>
+   </div>
+   <br>
+   <div class="">
+    <h1 class="text-xl text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</h1>
+   </div>
+   <br>
+     <div class="flex justify-between items-center">
+      <div>
+        <p class="text-[#64748B]">Assignee:</p>
+        <h1 class=" font-bold">Fahim Ahmed</h1>
+      </div>
+    <div>
+      <p class="text-[#64748B]">Priority:</p>
+      <span class="bg-[#EF4444] text-white rounded-lg">High</span>
+    </div>
+   </div>
+     `;
      document.getElementById("my_modal").showModal();
 }
     const displayLevel=(words)=>{
@@ -143,8 +176,28 @@ const displayDetail=(word)=>{
 `;
         wordContainer.appendChild(card);
     });
+     controlSpinner(false);
      createNumber()
-     controlSpiner(false);
+     
 };
 
-loadLevel()
+loadLevel();
+
+
+document.getElementById("btn-issues").addEventListener("click",()=>{
+ const input=document.getElementById("input-search")
+ const searchValue = input.value.trim().toLowerCase();
+//  console.log(searchValue);
+
+ fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+  .then((res)=>res.json())
+  .then((data) => {
+     const allWords=data.data;
+     console.log(allWords);
+     const filterWords=allWords.filter((word)=>
+    word.title.toLowerCase().includes(searchValue)
+    )
+   displayLevel(filterWords);
+    
+  });
+});

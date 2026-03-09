@@ -22,9 +22,9 @@
      <section>
         <div class=" flex gap-2 justify-between items-center">
           <img src="./assets/github-logo.png" alt="">
-      <div>
+      
         <h2 class="text-2xl font-blod mt-10">GitHub Issues Tracker</h2>
-        </div>
+        
         <div class="join">
     <div>
     <label class="input validator join-item">
@@ -39,11 +39,11 @@
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
         </g>
       </svg>
-      <input type="email" placeholder="Search issues..." required />
+      <input id="input-search" class="text" placeholder="Search issues..." required />
     </label>
     <div class="validator-hint hidden">text</div>
   </div>
-  <button class="btn btn-neutral join-item">+New issues</button>
+  <button id="btn-issues" class="btn btn-primary join-item">+New issues</button>
 </div>
     </div>
     
@@ -94,7 +94,7 @@
   </div>
 </div>
 </section>
-<section id="spinner" class="flex justify-center items-center py-6 hidden">
+<section id="spinner" class="flex justify-center items-center py-6 ">
   <span class="loading loading-ring loading-xl"></span>
 </section>
    
@@ -108,7 +108,7 @@
 <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
    <div id="card-container"></div>
-   <div class="">
+   <!-- <div class="">
     <h1 class="text-3xl font-bold">Fix broken image uploads</h1>
    </div>
    <div class="">
@@ -125,11 +125,21 @@
    <div class="">
     <h1 class="text-xl text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</h1>
    </div>
-
+   <br>
+     <div class="flex justify-between items-center">
+      <div>
+        <p class="text-[#64748B]">Assignee:</p>
+        <h1 class=" font-bold">Fahim Ahmed</h1>
+      </div>
+    <div>
+      <p class="text-[#64748B]">Priority:</p>
+      <span class="bg-[#EF4444] text-white rounded-lg">High</span>
+    </div>
+   </div> -->
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        <button class="btn btn-primary">Close</button>
       </form>
     </div>
   </div>
