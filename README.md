@@ -86,12 +86,40 @@
 
 - Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
     - 1️⃣ What is the difference between var, let, and const?
+    #var
+    funtion scope
+    ex-1 var x=20;
+    ex-2 var name;
+    #let
+    Block Scoped {};
+    ex-let number=10;
+    ex-The number is updated in the loop
+    #const
+    Block Scoped {};
+    ex-const number=10;
+    ex-Number is not update in the loop
     - 2️⃣ What is the spread operator (...)?
+    spread operator using in the javascript
+    const parts = ["shoulders", "knees"];
+    const lyrics = ["head", ...parts, "and", "toes"]; 
+
     - 3️⃣ What is the difference between map(), filter(), and forEach()?
+       1-map
+       const numbers = [1, 2, 3];
+       const doubled = numbers.map(num => num * 2); 
+       2-fillter
+        const numbers = [1, 2, 3, 4];
+       const evenNumbers = numbers.filter(num => num % 2 === 0); 
+       3-forEash
+       const numbers = [1, 2, 3];
+       numbers.forEach(num => console.log(num * 2));
     - 4️⃣ What is an arrow function?
+    Arrow functionsare simply function statements with shorter syntaxes; they offer an alternative to the standard function construct, 
+    function (args){} and their primary advantage is in creating code clarity.
+
     - 5️⃣ What are template literals?
-
-
+    Template literasl are a feature in JavaScript that let developers work with strings in a convenient way. You denote regular strings in JavaScript using double quotes "" or single quotes ''.
+       
 ---
 
 ## 🛠️ Technology Stack
