@@ -159,7 +159,7 @@ const displayDetail=(word)=>{
         
       
     card.innerHTML = `
-     <div class="bg-white rounded-xl shadow-sm  py-10 px-10 space-y-4">
+     <div class="bg-white rounded-xl shadow-sm border-b-2 border-green-500 py-10 px-10 space-y-4">
     <div class="flex justify-between text-center  items-center shad">
       <img src="./assets/Open-Status.png" alt="">
       <button class="bg-gray-200 shadow-xl">${word.priority}</button>
