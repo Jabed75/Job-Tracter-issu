@@ -99,12 +99,12 @@ const displayDetail=(word)=>{
      const cardBox=document.getElementById("card-container");
      cardBox.innerHTML= `
       <div class="">
-    <h1 class="text-3xl font-bold">Fix broken image uploads</h1>
+    <h1 class="text-3xl font-bold">.${word.title}</h1>
    </div>
    <div class="">
-    <span class="text-xl bg-[#00A96E] text-[#FFFFFF] rounded-md">opened</span>
-    <span class="text-[#64748B]"> .Opened by Fahim Ahmed</span>
-    <span class="text-[#64748B]"> .22/02/2026</span>
+    <span class="text-xl bg-[#00A96E] text-[#FFFFFF] rounded-md">${word.status}</span>
+    <span class="text-[#64748B]">  .Opened by Fahim Ahmed</span>
+    <span class="text-[#64748B]"> ${word.updatedAt}</span>
    </div>
    <br>
     <div class=" flex gap-10">
@@ -113,17 +113,17 @@ const displayDetail=(word)=>{
    </div>
    <br>
    <div class="">
-    <h1 class="text-xl text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</h1>
+    <h1 class="text-xl text-[#64748B]">${word.description}</h1>
    </div>
    <br>
      <div class="flex justify-between items-center">
       <div>
-        <p class="text-[#64748B]">Assignee:</p>
-        <h1 class=" font-bold">Fahim Ahmed</h1>
+        <p class="text-[#64748B]">${word.author}</p>
+        <h1 class=" font-bold">${word.assignee}</h1>
       </div>
     <div>
       <p class="text-[#64748B]">Priority:</p>
-      <span class="bg-[#EF4444] text-white rounded-lg">High</span>
+      <span class="bg-[#EF4444] text-white rounded-lg">${word.priority}</span>
     </div>
    </div>
      `;
